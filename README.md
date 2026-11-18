@@ -11,25 +11,25 @@ Pastikan **Python 3.9+** sudah terpasang.
 **Windows:**
 
 ```powershell
-py base64_halaman_ke_pdf.py "https://contoh.com/dokumen" -o hasil.pdf
+py downloads.py "https://contoh.com/dokumen" -o hasil.pdf
 ```
 
 **Linux / macOS:**
 
 ```bash
-python3 base64_halaman_ke_pdf.py 'https://contoh.com/dokumen' -o hasil.pdf
+python3 downloads.py 'https://contoh.com/dokumen' -o hasil.pdf
 ```
 
 Jika perlu login, tambahkan `--login`:
 
 ```bash
-python3 base64_halaman_ke_pdf.py 'https://contoh.com/dokumen' --login -o hasil.pdf
+python3 downloads.py 'https://contoh.com/dokumen' --login -o hasil.pdf
 ```
 
 Untuk mengubah data Base64 dari file TXT:
 
 ```bash
-python3 base64_halaman_ke_pdf.py --input halaman.txt -o hasil.pdf
+python3 downloads.py --input halaman.txt -o hasil.pdf
 ```
 
 > **Catatan:** Hanya mendukung gambar `data:image/...;base64`, bukan semua jenis PDF viewer. Gunakan pada dokumen yang berhak kamu akses dan simpan.
