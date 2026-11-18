@@ -1,12 +1,14 @@
 # Base64 to PDF Downloader
 
-Script Python untuk mengambil gambar halaman **Base64** dari situs dokumen dan menggabungkannya menjadi satu file PDF.
+Script Python untuk menggabungkan gambar halaman `data:image/...;base64` dari situs dokumen menjadi satu PDF. Mendukung Windows, Linux, dan macOS.
 
-Mendukung **Windows, Linux, dan macOS**. Dependensi Python dan Chromium Playwright diinstal otomatis saat pertama kali dijalankan.
+## Cara pakai
 
-## Cara Pakai
+Pastikan Python sudah terinstal. Tersedia dua cara:
 
-Pastikan **Python 3.9+** sudah terpasang.
+### 1. Otomatis (`downloads.py`)
+
+Dependensi dan Chromium Playwright akan dipasang otomatis jika belum tersedia.
 
 **Windows:**
 
@@ -20,16 +22,37 @@ py downloads.py "https://contoh.com/dokumen" -o hasil.pdf
 python3 downloads.py 'https://contoh.com/dokumen' -o hasil.pdf
 ```
 
-Jika perlu login, tambahkan `--login`:
+Untuk situs yang membutuhkan login, tambahkan `--login`.
+
+### 2. Manual (`downloadmanual.py`)
+
+Instal dependensi terlebih dahulu:
 
 ```bash
-python3 downloads.py 'https://contoh.com/dokumen' --login -o hasil.pdf
+python -m pip install pillow playwright
+python -m playwright install chromium
 ```
 
-Untuk mengubah data Base64 dari file TXT:
+Jalankan:
+
+**Windows:**
+
+```powershell
+py downloadmanual.py "https://contoh.com/dokumen" -o hasil.pdf
+```
+
+**Linux / macOS:**
 
 ```bash
-python3 downloads.py --input halaman.txt -o hasil.pdf
+python3 downloadmanual.py 'https://contoh.com/dokumen' -o hasil.pdf
 ```
 
-> **Catatan:** Hanya mendukung gambar `data:image/...;base64`, bukan semua jenis PDF viewer. Gunakan pada dokumen yang berhak kamu akses dan simpan.
+Browser akan terbuka. Login atau buka dokumen jika diperlukan, lalu tekan **Enter di terminal** untuk mulai mengambil halaman.
+
+Untuk data Base64 yang sudah disimpan di file TXT (satu URI per baris):
+
+```bash
+python3 downloadmanual.py --input halaman.txt -o hasil.pdf
+```
+
+> **Catatan:** Hanya mendukung gambar Base64 (`data:image/...;base64`), bukan semua viewer PDF, canvas, atau blob. Gunakan hanya pada dokumen yang berhak kamu akses.
